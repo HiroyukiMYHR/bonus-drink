@@ -1,12 +1,12 @@
 class BonusDrink
   def self.total_count_for(amount)
-    drank = amount
-    while (bonus = amount / 3) > 0
-      remains = amount % 3
-      drank += bonus
-      amount = bonus + remains
+    bonus = amount / 3
+    remains = amount % 3
+    if bonus == 0 then
+      drank = amount
+    else
+      drank = (amount - remains) + total_count_for(bonus + remains)
     end
-    drank
   end
 end
 
